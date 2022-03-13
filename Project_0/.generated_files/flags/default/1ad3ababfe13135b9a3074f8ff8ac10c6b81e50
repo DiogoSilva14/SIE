@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes"   -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -std=c99 -mdfp="${DFP_DIR}"  /home/diogo/Documents/SIE/Project_0/src/timers/timers.c

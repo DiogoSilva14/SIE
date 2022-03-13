@@ -13,37 +13,39 @@
   @Description
     This is the file which has the main function
  */
-#define _SUPPRESS_PLIB_WARNING
-
 #include <p32xxxx.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <xc.h>
 #include "config_bits.h"
+#include "constants.h"
 #include "timers/timers.h"
-#include "uart/uart.h"
+#include "uart/uart_functions.h"
+
+void delay_us(unsigned int us)
+{
+    // Convert microseconds us into how many clock ticks it will take
+    us *= GetSystemClock() / 1000000 / 2; // Core Timer updates every 2 ticks
+
+    _CP0_SET_COUNT(0); // Set Core Timer count to 0
+
+    while (us > _CP0_GET_COUNT()); // Wait until Core Timer count reaches the number we calculated earlier
+}
 
 int main(){
-    // LED4 is connected to Pin 13, which is RA3    
-    
-    TRISAbits.TRISA3 = 0;
-    
-    LATAbits.LATA3 = 1;
-    
+ 
     init_uart(115200);
-    
-    while(1){
-        U1TXREG = 'a';
+
+    for(int i=0; i < 100; i++){
+        printf("Num: %d \n\r", i);
+        delay_us(1000000);
     }
     
-    init_timer4();
+    int a = 0;
     
-    while(1){
-        if(TMR4 > 30000){
-           LATAbits.LATA3 = 1; 
-        }else{
-           LATAbits.LATA3 = 0;
-        }
+    while(1)
+    {
+        printf("COUNT DONE\n\r");
+        delay_us(1000000);
     }
-    
-    return 0;
 }

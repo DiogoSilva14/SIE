@@ -12,15 +12,21 @@
  */
 /* ************************************************************************** */
 
-#ifndef _UART_H    /* Guard against multiple inclusion */
-#define _UART_H
+#ifndef _UART_FUNC_H    /* Guard against multiple inclusion */
+#define _UART_FUNC_H
 
-#define SYSCLK 48000000U
-#define PBCLK SYSCLK/2
-
+#include "constants.h"
+#include <xc.h>
 #include <p32xxxx.h>
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <unistd.h>
+
+/** @brief Initializes UART1 and sets it as the output for stdio so we can use
+ * printf() to output to UART1
+ *
+ *  @param baud_rate Baud rate to set for the UART
+ */
 
 void init_uart(uint32_t baud_rate);
 

@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/diogo/Documents/SIE/Project_0/include/config_bits.h</file>
-            <file>file:/home/diogo/Documents/SIE/Project_0/src/uart/uart.c</file>
-            <file>file:/home/diogo/Documents/SIE/Project_0/src/timers/timers.c</file>
-            <file>file:/home/diogo/Documents/SIE/Project_0/include/uart/uart.h</file>
+            <file>file:/home/diogo/Documents/SIE/Project_0/includes/config_bits.h</file>
+            <file>file:/home/diogo/Documents/SIE/Project_0/includes/constants.h</file>
+            <file>file:/home/diogo/Documents/SIE/Project_0/src/uart/uart_functions.c</file>
+            <file>file:/home/diogo/Documents/SIE/Project_0/includes/uart/uart_functions.h</file>
             <file>file:/home/diogo/Documents/SIE/Project_0/src/main.c</file>
-            <file>file:/home/diogo/Documents/SIE/Project_0/include/timers/timers.h</file>
         </group>
     </open-files>
 </project-private>
