@@ -48,3 +48,30 @@ void init_uart(uint32_t baud_rate){
     
     U1MODEbits.ON = 1; // Turn UART ON
 }
+
+int _mon_getc(int canblock){
+    if(canblock == 0)
+        if(U1STAbits.URXDA)
+            return (int)U1RXREG;
+        else
+            return -1;
+    else{
+        while(!U1STAbits.URXDA);
+        return (int)U1RXREG;
+    }
+}
+
+ssize_t read(int fd, void *buf, size_t count){
+    for(int i=0; i < count; i++){
+        char read_val = _mon_getc(1);
+        
+        if(!read_val){
+            return -1;
+        }
+        else{
+            *(char*)(buf+i) = read_val;
+        }
+    }
+    
+    return count;
+}

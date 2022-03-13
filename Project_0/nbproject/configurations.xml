@@ -8,10 +8,11 @@
         <itemPath>includes/timers/timers.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="UART" projectFiles="true">
+        <itemPath>includes/uart/uart_functions.h</itemPath>
       </logicalFolder>
       <itemPath>includes/constants.h</itemPath>
       <itemPath>includes/config_bits.h</itemPath>
-      <itemPath>includes/uart/uart_functions.h</itemPath>
+      <itemPath>includes/aux_functions.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -27,6 +28,7 @@
         <itemPath>src/uart/uart_functions.c</itemPath>
       </logicalFolder>
       <itemPath>src/main.c</itemPath>
+      <itemPath>src/aux_functions.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -299,6 +301,9 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
+      <PK3OBPlatformTool>
+        <property key="firmware.download.all" value="false"/>
+      </PK3OBPlatformTool>
       <Tool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>

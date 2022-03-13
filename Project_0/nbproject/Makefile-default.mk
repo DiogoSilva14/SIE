@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/main.c src/uart/uart_functions.c src/timers/timers.c
+SOURCEFILES_QUOTED_IF_SPACED=src/main.c src/uart/uart_functions.c src/timers/timers.c src/aux_functions.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/uart/uart_functions.o ${OBJECTDIR}/src/timers/timers.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/uart/uart_functions.o.d ${OBJECTDIR}/src/timers/timers.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/uart/uart_functions.o ${OBJECTDIR}/src/timers/timers.o ${OBJECTDIR}/src/aux_functions.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/uart/uart_functions.o.d ${OBJECTDIR}/src/timers/timers.o.d ${OBJECTDIR}/src/aux_functions.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/uart/uart_functions.o ${OBJECTDIR}/src/timers/timers.o
+OBJECTFILES=${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/uart/uart_functions.o ${OBJECTDIR}/src/timers/timers.o ${OBJECTDIR}/src/aux_functions.o
 
 # Source Files
-SOURCEFILES=src/main.c src/uart/uart_functions.c src/timers/timers.c
+SOURCEFILES=src/main.c src/uart/uart_functions.c src/timers/timers.c src/aux_functions.c
 
 
 
@@ -125,6 +125,12 @@ ${OBJECTDIR}/src/timers/timers.o: src/timers/timers.c  .generated_files/flags/de
 	@${RM} ${OBJECTDIR}/src/timers/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/timers/timers.o.d" -o ${OBJECTDIR}/src/timers/timers.o src/timers/timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -std=c99 -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/src/aux_functions.o: src/aux_functions.c  .generated_files/flags/default/fa72eeedfd553ca4a81e170ebfeb3069d02b4345 .generated_files/flags/default/f771c43d2b5d2a67da2c4ea3e647e16a157ee5dd
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/aux_functions.o.d 
+	@${RM} ${OBJECTDIR}/src/aux_functions.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/aux_functions.o.d" -o ${OBJECTDIR}/src/aux_functions.o src/aux_functions.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -std=c99 -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/30df7d281b03370e11f8c7c8e50f4a94ce8ff000 .generated_files/flags/default/f771c43d2b5d2a67da2c4ea3e647e16a157ee5dd
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -143,6 +149,12 @@ ${OBJECTDIR}/src/timers/timers.o: src/timers/timers.c  .generated_files/flags/de
 	@${RM} ${OBJECTDIR}/src/timers/timers.o.d 
 	@${RM} ${OBJECTDIR}/src/timers/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/timers/timers.o.d" -o ${OBJECTDIR}/src/timers/timers.o src/timers/timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -std=c99 -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/aux_functions.o: src/aux_functions.c  .generated_files/flags/default/406456325565d96ce52c57fdcb1764186d2b9451 .generated_files/flags/default/f771c43d2b5d2a67da2c4ea3e647e16a157ee5dd
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/aux_functions.o.d 
+	@${RM} ${OBJECTDIR}/src/aux_functions.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/aux_functions.o.d" -o ${OBJECTDIR}/src/aux_functions.o src/aux_functions.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -std=c99 -mdfp="${DFP_DIR}"  
 	
 endif
 

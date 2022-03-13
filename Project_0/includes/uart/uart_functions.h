@@ -30,4 +30,18 @@
 
 void init_uart(uint32_t baud_rate);
 
+/** @brief Gets a character from UART1
+ *
+ *  @param canblock If canblock is different than zero the function will block until a character is received. Otherwise it will return imediatelly, wherether the is a character or not
+ */
+int _mon_getc(int canblock);
+
+/** @brief Trying to overwrite stdin function read()
+ *
+ *  @param fd File descriptor to use reading (not implemented, the function
+ * always reads from UART1
+ *  @param buf Pointer to buffer to which the function should read into
+ *  @param count Number of characters to read
+ */
+ssize_t read(int fd, void *buf, size_t count);
 #endif
