@@ -1,13 +1,8 @@
 /* ************************************************************************** */
-/** uart.h
+/** 
  * 
-  @File Name
-    uart.h
+  @file uart_functions.h
 
-  @Summary
-    Uart functions header file
-
-  @Description
     Header file for functions associated with the uart
  */
 /* ************************************************************************** */

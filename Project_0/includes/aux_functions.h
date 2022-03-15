@@ -1,13 +1,8 @@
 /* ************************************************************************** */
-/** aux_functions.h
+/**
 
-  @File Name
-    aux_functions.h
+  @file aux_functions.h
 
-  @Summary
-    Various utility functions
-
-  @Description
     This is the header file for functions that provide some utility
  */
 /* ************************************************************************** */

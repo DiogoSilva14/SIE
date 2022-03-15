@@ -1,16 +1,10 @@
 /* ************************************************************************** */
-/** timers.h
-
-  @File Name
-    timers.h
-
-  @Summary
-    Timer associated functions
-
-  @Description
-    This is the header file for functions associated to the initialization, 
- * configuration and manipulation of timers
- */
+/**
+* @file timers.h
+*
+* This is the header file for functions associated to the initialization, 
+* configuration and manipulation of timers
+*/
 /* ************************************************************************** */
 
 #ifndef TIMERS_H   /* Guard against multiple inclusion */

@@ -1,14 +1,9 @@
 /* ************************************************************************** */
-/** constants.h
-
-  @File Name
-    constants.h
-
-  @Summary
-    Constants header file
-
-  @Description
-    This file is used to set constants for use by various functions, such as SYSCLK
+/** 
+ *
+ * @file constants.h
+ *
+ *   This file is used to set constants for use by various functions, such as SYSCLK
  * , PBCLK, etc...
  */
 /* ************************************************************************** */

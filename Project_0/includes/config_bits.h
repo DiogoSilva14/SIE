@@ -1,13 +1,8 @@
 /* ************************************************************************** */
-/** config_bits.h
+/**
 
-  @File Name
-    filename.h
+  @file config_bits.h
 
-  @Summary
-    Include file with config bits
-
-  @Description
     This file defines the include bits used by the PIC32
  */
 /* ************************************************************************** */
