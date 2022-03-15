@@ -33,7 +33,7 @@ int main(){
     
     TRISAbits.TRISA3 = 0;
     init_uart(115200);
-    init_timer4(4);
+    init_timer4(1);
     
     INTEnableSystemMultiVectoredInt();
     

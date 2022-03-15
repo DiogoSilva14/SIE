@@ -31,8 +31,8 @@
  */
 void init_timer4(uint32_t freq);
 
-/** @brief Timer 4 ISR
+/** @brief Timer 5 ISR
  */
-//void __ISR(_TIMER_4_VECTOR, IPL3AUTO) Timer4_Interrupt();
+void __ISR(_TIMER_5_VECTOR, IPL3AUTO) Timer5Handler(void);
 
 #endif
