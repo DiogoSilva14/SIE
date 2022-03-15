@@ -16,22 +16,30 @@
 #include "config_bits.h"
 #include <p32xxxx.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <xc.h>
+#define _SUPPRESS_PLIB_WARNING
+#include <plib.h>
+#include "aux_functions.h"
 #include "constants.h"
 #include "timers/timers.h"
 #include "uart/uart_functions.h"
 
 int main(){
- 
+    SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
+    
+    INTDisableInterrupts();
+    
+    TRISAbits.TRISA3 = 0;
     init_uart(115200);
-
-    for(int i=0; i < 10; i++){
-        printf("Num: %d \n\r", i);
-        delay_us(1000000);
-    }
+    init_timer4(4);
+    
+    INTEnableSystemMultiVectoredInt();
+    
+    INTEnableInterrupts();
     
     while(1){
-        printf("%c",_mon_getc(1));
+        delay_us(100000);
     }
 }

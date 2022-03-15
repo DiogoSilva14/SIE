@@ -17,9 +17,22 @@
 #define TIMERS_H
 
 #include <p32xxxx.h>
+#include <xc.h>
 #include <stdio.h>
 #include <stdint.h>
+#define _SUPPRESS_PLIB_WARNING
+#include <plib.h>
+#include <sys/attribs.h>
+#include "constants.h"
 
-void init_timer4();
+/** @brief Function to init timer4
+ *
+ *  @param freq Frequency of timer4 interrupt
+ */
+void init_timer4(uint32_t freq);
+
+/** @brief Timer 4 ISR
+ */
+//void __ISR(_TIMER_4_VECTOR, IPL3AUTO) Timer4_Interrupt();
 
 #endif

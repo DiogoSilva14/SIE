@@ -50,18 +50,20 @@ void init_uart(uint32_t baud_rate){
 }
 
 int _mon_getc(int canblock){
+    volatile unsigned int *rxreg = &U1RXREG;
+    
     if(canblock == 0)
         if(U1STAbits.URXDA)
-            return (int)U1RXREG;
+            return *rxreg;
         else
             return -1;
     else{
         while(!U1STAbits.URXDA);
-        return (int)U1RXREG;
+        return *rxreg;
     }
 }
 
-ssize_t read(int fd, void *buf, size_t count){
+int read(int fd, void *buf, size_t count){
     for(int i=0; i < count; i++){
         char read_val = _mon_getc(1);
         
