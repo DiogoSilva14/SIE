@@ -16,26 +16,20 @@
 #include "constants.h"
 #include "timers/timers.h"
 #include "uart/uart_functions.h"
+#include "adc/adc.h"
 
 int main(){
     SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
     
-    INTDisableInterrupts();
+    init_uart(9600);
+    init_adc1();
     
-    TRISAbits.TRISA3 = 0;
-    init_uart(115200);
-    init_timer4(1);
-    init_timer2_pwm(2000, 10.0);
-    
-    INTEnableSystemMultiVectoredInt();
-    
-    INTEnableInterrupts();
-    
-    char str[80];
+    printf("Hi!\n\r");
     
     while(1){
-        scanf("%s",str);
-        printf("%s\n\r",str);
-        //delay_us(100000);
+        
+        printf("Voltage: %f \n\r", get_thermistor_temp());
+        
+        delay_us(1000000);
     }
 }
