@@ -29,4 +29,17 @@ void init_timer4(uint32_t freq);
  */
 void __ISR(_TIMER_5_VECTOR, IPL3AUTO) Timer5Handler(void);
 
+/** @brief Function to initiate timer2 with output compare in PWM mode
+ *
+ *  @param freq Frequency of timer2 PWM
+ *  @param duty_cycle Duty cycle of PWM signal from 0 to 100
+ */
+void init_timer2_pwm(uint32_t freq, float duty_cycle);
+
+/** @brief Function to change the duty cycle of output compare PWM
+ *
+ *  @param duty_cycle New duty cycle value from 0 to 100
+ */
+void pwm_dutycycle(float duty_cycle);
+
 #endif

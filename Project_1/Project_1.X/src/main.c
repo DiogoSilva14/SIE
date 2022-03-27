@@ -17,10 +17,16 @@
 #include "timers/timers.h"
 #include "uart/uart_functions.h"
 #include "adc/adc.h"
+#include "temperature.h"
 
 int main(){
     SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
     
+    INTEnableSystemMultiVectoredInt();
+    
+    INTEnableInterrupts();
+    
+    init_timer2_pwm(20000, 50);
     init_uart(9600);
     init_adc1();
     
@@ -28,7 +34,7 @@ int main(){
     
     while(1){
         
-        printf("Voltage: %f \n\r", get_thermistor_temp());
+        printf("Temp: %f \n\r", get_thermistor_temp());
         
         delay_us(1000000);
     }

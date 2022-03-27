@@ -1,7 +1,8 @@
 #include "adc/adc.h"
 
-volatile int values[10];
-volatile int counter = 0;
+static volatile int values[10];
+static volatile int counter = 0;
+static volatile int adc_pin = 14;
 
 void init_adc1(){
    AD1CON1bits.SSRC = 0x7;
@@ -9,8 +10,8 @@ void init_adc1(){
    AD1CON3bits.ADCS = 2;
    AD1CON3bits.SAMC = 20;
    AD1PCFGbits.PCFG15 = 0;
-   AD1CHSbits.CH0SA = 15;
-   AD1CON1bits.SAMP = 1;
+   AD1PCFGbits.PCFG14 = 0;
+   AD1CHSbits.CH0SA = adc_pin;
    
    INTSetVectorPriority(INT_ADC_VECTOR, INT_PRIORITY_LEVEL_2);
    INTSetVectorSubPriority(INT_ADC_VECTOR, INT_SUB_PRIORITY_LEVEL_3);
@@ -18,15 +19,23 @@ void init_adc1(){
    INTEnable(INT_AD1, INT_ENABLED); 
    
    AD1CON1bits.ADON = 1;
-   
+     
+   AD1CON1bits.SAMP = 1;
 }
 
 int get_adc_mean(){
     int sum = 0;
     
+    INTDisableInterrupts();
+    
     for(int i=0; i < 10; i++){
-        sum += values[i];
+        //sum += values[i];
+        printf("Values %d: %d\n\r", i, values[i]);
     }
+    
+    INTEnableInterrupts();
+    
+    printf("Sum: %d\n\r",sum);
     
     return sum/10;
 }
@@ -50,13 +59,27 @@ int read_adc1(uint8_t pin){
 }
 
 void __ISR(_ADC_VECTOR, IPL2AUTO) Adc1Handler(void){
-    printf("a\n");
-    
-    values[counter++] = ADC1BUF0;
-    
-    if(counter == 10){
-        counter = 0;
+    /*
+    if(adc_pin == 14){
+        printf("Pin 14: %d \n", ADC1BUF0);
+        adc_pin = 15;
+        AD1CHSbits.CH0SA = adc_pin;
+    }else{
+        printf("Pin 15: %d \n", ADC1BUF0);
+        adc_pin = 14;
+        AD1CHSbits.CH0SA = adc_pin;
     }
+     */
+    //values[counter] = ADC1BUF0;
+    
+    //counter++;
+    
+    //if(counter == 10){
+    //    counter = 0;
+    //}
+    
+    
+    AD1CON1bits.SAMP = 1;
     
     INTClearFlag(INT_AD1);
 }
