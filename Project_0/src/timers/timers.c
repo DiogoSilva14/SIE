@@ -1,5 +1,7 @@
 #include "timers/timers.h"
 
+uint32_t PR_REGISTER = 0;
+
 void init_timer4(uint32_t freq){
     
     uint32_t PR_REGISTER = GetPeripheralClock()/256/freq;
@@ -11,9 +13,9 @@ void init_timer4(uint32_t freq){
 
 void init_timer2_pwm(uint32_t freq, float duty_cycle){
     
-    uint32_t PR_REGISTER = GetPeripheralClock()/256/freq;
+    PR_REGISTER = GetPeripheralClock()/4/freq;
     
-    OpenTimer2(T2_ON | T2_PS_1_256 , PR_REGISTER);
+    OpenTimer2(T2_ON | T2_PS_1_4 , PR_REGISTER);
     
     float divisor = 100/duty_cycle;
     
@@ -26,10 +28,12 @@ void init_timer2_pwm(uint32_t freq, float duty_cycle){
 }
 
 void pwm_dutycycle(float duty_cycle){
+    float divisor = 100/duty_cycle;
     
+    OC1RS = PR_REGISTER/divisor;
 }
 
 void __ISR(_TIMER_5_VECTOR, IPL3AUTO) Timer5Handler(void){
-    LATAbits.LATA3 = !LATAbits.LATA3;
+    read_adc1(15);
     mT5ClearIntFlag();
 }

@@ -16,26 +16,26 @@
 #include "constants.h"
 #include "timers/timers.h"
 #include "uart/uart_functions.h"
+#include "adc/adc.h"
 
 int main(){
     SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
-    
-    INTDisableInterrupts();
-    
-    TRISAbits.TRISA3 = 0;
-    init_uart(115200);
-    init_timer4(1);
-    init_timer2_pwm(2000, 10.0);
     
     INTEnableSystemMultiVectoredInt();
     
     INTEnableInterrupts();
     
-    char str[80];
+    init_timer4(500);
+    init_uart(9600);
+    init_timer2_pwm(2000, 10.0);
+    init_adc1();
+    
+    float pwm_val = 0;
     
     while(1){
-        scanf("%s",str);
-        printf("%s\n\r",str);
-        //delay_us(100000);
+        printf("PWM Val: %f \n", get_adc_voltage());
+        pwm_val = get_adc_voltage()/3.3*100;
+        pwm_dutycycle(pwm_val);
+        delay_us(1000);
     }
 }

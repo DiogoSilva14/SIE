@@ -18,6 +18,7 @@
 #include <plib.h>
 #include <sys/attribs.h>
 #include "constants.h"
+#include "adc/adc.h"
 
 /** @brief Function to init timer4
  *
@@ -28,5 +29,18 @@ void init_timer4(uint32_t freq);
 /** @brief Timer 5 ISR
  */
 void __ISR(_TIMER_5_VECTOR, IPL3AUTO) Timer5Handler(void);
+
+/** @brief Function to initiate timer2 with output compare in PWM mode
+ *
+ *  @param freq Frequency of timer2 PWM
+ *  @param duty_cycle Duty cycle of PWM signal from 0 to 100
+ */
+void init_timer2_pwm(uint32_t freq, float duty_cycle);
+
+/** @brief Function to change the duty cycle of output compare PWM
+ *
+ *  @param duty_cycle New duty cycle value from 0 to 100
+ */
+void pwm_dutycycle(float duty_cycle);
 
 #endif
