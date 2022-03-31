@@ -10,6 +10,11 @@
 #ifndef _TEMPERATURE_H    /* Guard against multiple inclusion */
 #define _TEMPERATURE_H
 
+#define THERMISTOR 14
+#define THERMOCOUPLER 15
+#define THERMISTOR_CALIB -2.99
+#define THERMOCOUPLER_CALIB -12.5
+
 #include <p32xxxx.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,6 +25,6 @@
 #include "constants.h"
 #include "adc/adc.h"
 
-float get_thermistor_temp();
+float get_temp(uint8_t device);
 
 #endif

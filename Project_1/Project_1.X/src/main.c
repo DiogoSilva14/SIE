@@ -26,16 +26,26 @@ int main(){
     
     INTEnableInterrupts();
     
-    init_timer2_pwm(20000, 50);
+    init_timer2_pwm(20000, 0);
     init_uart(9600);
     init_adc1();
     
     printf("Hi!\n\r");
     
+    int pwm = 0;
+    
     while(1){
         
-        printf("Temp: %f \n\r", get_thermistor_temp());
+        //printf("Thermistor: %f Thermocoupler: %f\n\r", get_temp(THERMISTOR), get_temp(THERMOCOUPLER));
         
-        delay_us(1000000);
+        //delay_us(1000000);
+        
+        pwm_dutycycle(pwm++);
+        
+        if(pwm == 101){
+            pwm = 0;
+        }
+        
+        delay_us(100000);
     }
 }

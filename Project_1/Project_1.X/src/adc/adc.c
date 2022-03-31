@@ -1,8 +1,10 @@
 #include "adc/adc.h"
 
-static volatile int values[10];
-static volatile int counter = 0;
-static volatile int adc_pin = 14;
+static volatile uint32_t values_14[10];
+static volatile uint32_t counter_14 = 0;
+static volatile uint32_t values_15[10];
+static volatile uint32_t counter_15 = 0;
+static volatile uint32_t adc_pin = 14;
 
 void init_adc1(){
    AD1CON1bits.SSRC = 0x7;
@@ -23,19 +25,21 @@ void init_adc1(){
    AD1CON1bits.SAMP = 1;
 }
 
-int get_adc_mean(){
-    int sum = 0;
+int get_adc_mean(uint32_t pin){
+    uint32_t sum = 0;
     
     INTDisableInterrupts();
     
+    
     for(int i=0; i < 10; i++){
-        //sum += values[i];
-        printf("Values %d: %d\n\r", i, values[i]);
+        if(pin == 14){
+            sum += values_14[i];
+        }else{
+            sum += values_15[i];
+        }
     }
     
     INTEnableInterrupts();
-    
-    printf("Sum: %d\n\r",sum);
     
     return sum/10;
 }
@@ -59,24 +63,25 @@ int read_adc1(uint8_t pin){
 }
 
 void __ISR(_ADC_VECTOR, IPL2AUTO) Adc1Handler(void){
-    /*
     if(adc_pin == 14){
-        printf("Pin 14: %d \n", ADC1BUF0);
         adc_pin = 15;
         AD1CHSbits.CH0SA = adc_pin;
+        
+        values_14[counter_14++] = ADC1BUF0;
+
+        if(counter_14 == 10){
+            counter_14 = 0;
+        }
     }else{
-        printf("Pin 15: %d \n", ADC1BUF0);
         adc_pin = 14;
         AD1CHSbits.CH0SA = adc_pin;
+        
+        values_15[counter_15++] = ADC1BUF0;
+
+        if(counter_15 == 10){
+            counter_15 = 0;
+        }
     }
-     */
-    //values[counter] = ADC1BUF0;
-    
-    //counter++;
-    
-    //if(counter == 10){
-    //    counter = 0;
-    //}
     
     
     AD1CON1bits.SAMP = 1;

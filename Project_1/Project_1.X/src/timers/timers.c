@@ -17,10 +17,9 @@ void init_timer2_pwm(uint32_t freq, float duty_cycle){
     
     OpenTimer2(T2_ON | T2_PS_1_4 , PR_REGISTER);
     
-    float divisor = 100/duty_cycle;
+    pwm_dutycycle(duty_cycle);
     
-    OC1RS = PR_REGISTER/divisor;
-    
+    ODCDbits.ODCD0 = 1; // Open Drain
     OC1CONbits.OC32 = 0; // Disable 32bit mode
     OC1CONbits.OCTSEL = 0; // Use Timer2 as a source
     OC1CONbits.OCM = 0b110; // PWM Mode, fault pin disabled
@@ -28,7 +27,7 @@ void init_timer2_pwm(uint32_t freq, float duty_cycle){
 }
 
 void pwm_dutycycle(float duty_cycle){
-    float divisor = 100/duty_cycle;
+    float divisor = 100.0/duty_cycle;
     
     OC1RS = PR_REGISTER/divisor;
 }
