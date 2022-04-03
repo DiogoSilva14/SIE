@@ -12,7 +12,7 @@
 
 #define THERMISTOR 14
 #define THERMOCOUPLER 15
-#define THERMISTOR_CALIB -2.99
+#define THERMISTOR_CALIB -1.33
 #define THERMOCOUPLER_CALIB -12.5
 
 #include <p32xxxx.h>
@@ -26,5 +26,6 @@
 #include "adc/adc.h"
 
 float get_temp(uint8_t device);
+float get_setpoint();
 
 #endif

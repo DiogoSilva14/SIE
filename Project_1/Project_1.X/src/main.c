@@ -18,6 +18,7 @@
 #include "uart/uart_functions.h"
 #include "adc/adc.h"
 #include "temperature.h"
+#include "PID.h"
 
 int main(){
     SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
@@ -26,26 +27,23 @@ int main(){
     
     INTEnableInterrupts();
     
-    init_timer2_pwm(20000, 0);
-    init_uart(9600);
+    init_uart(115200);
     init_adc1();
+    init_timer2_pwm(20000, 0);
     
-    printf("Hi!\n\r");
+    float setpoint = get_setpoint();
     
-    int pwm = 0;
+    PID_init(setpoint);
     
     while(1){
         
-        //printf("Thermistor: %f Thermocoupler: %f\n\r", get_temp(THERMISTOR), get_temp(THERMOCOUPLER));
+        float pwm = PID_loop(get_temp(THERMOCOUPLER));
         
-        //delay_us(1000000);
+        printf("Setpoint: %f Amb: %f Thermocoupler: %f\n\r", setpoint, get_temp(THERMISTOR), get_temp(THERMOCOUPLER));
         
-        pwm_dutycycle(pwm++);
+        pwm_dutycycle(pwm);
         
-        if(pwm == 101){
-            pwm = 0;
-        }
+        delay_us(1000);
         
-        delay_us(100000);
     }
 }

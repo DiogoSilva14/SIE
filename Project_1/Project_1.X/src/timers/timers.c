@@ -29,7 +29,11 @@ void init_timer2_pwm(uint32_t freq, float duty_cycle){
 void pwm_dutycycle(float duty_cycle){
     float divisor = 100.0/duty_cycle;
     
-    OC1RS = PR_REGISTER/divisor;
+    if(duty_cycle <= 0){
+       OC1RS = 0; 
+    }else{
+       OC1RS = PR_REGISTER/divisor; 
+    }
 }
 
 void __ISR(_TIMER_5_VECTOR, IPL3AUTO) Timer5Handler(void){

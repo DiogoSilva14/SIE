@@ -30,3 +30,24 @@ float get_temp(uint8_t device){
    
    return temp;
 }
+
+float get_setpoint(){
+    char str[80]; 
+    int i = 0;
+    char input = 'a';
+    
+    printf("Insert the desired temperature setpoint: \r\n");
+    
+    while(input != '\r'){
+        input = getchar();
+        
+        if(input != '\r'){
+            //printf("%c", input);
+            str[i++] = input;
+        }       
+    }
+    
+    printf("\n\r");
+    
+    return atof(str);
+}
