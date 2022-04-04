@@ -12,8 +12,8 @@
 
 #define THERMISTOR 14
 #define THERMOCOUPLER 15
-#define THERMISTOR_CALIB -1.33
-#define THERMOCOUPLER_CALIB -12.5
+#define THERMISTOR_CALIB -3.13
+#define THERMOCOUPLER_CALIB -10.7
 
 #include <p32xxxx.h>
 #include <stdio.h>

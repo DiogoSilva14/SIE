@@ -11,7 +11,7 @@
 #include "constants.h"
 
 #define Kp 5
-#define Ki 4
+#define Ki 7
 
 void PID_init(float setpoint);
 float PID_loop(float temp);

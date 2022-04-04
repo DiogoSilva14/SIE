@@ -1,8 +1,8 @@
 #include "adc/adc.h"
 
-static volatile uint32_t values_14[10];
+static volatile uint32_t values_14[30];
 static volatile uint32_t counter_14 = 0;
-static volatile uint32_t values_15[10];
+static volatile uint32_t values_15[30];
 static volatile uint32_t counter_15 = 0;
 static volatile uint32_t adc_pin = 14;
 
@@ -31,7 +31,7 @@ int get_adc_mean(uint32_t pin){
     INTDisableInterrupts();
     
     
-    for(int i=0; i < 10; i++){
+    for(int i=0; i < 30; i++){
         if(pin == 14){
             sum += values_14[i];
         }else{
@@ -41,7 +41,7 @@ int get_adc_mean(uint32_t pin){
     
     INTEnableInterrupts();
     
-    return sum/10;
+    return sum/30;
 }
 
 int read_adc1(uint8_t pin){
@@ -69,7 +69,7 @@ void __ISR(_ADC_VECTOR, IPL2AUTO) Adc1Handler(void){
         
         values_14[counter_14++] = ADC1BUF0;
 
-        if(counter_14 == 10){
+        if(counter_14 == 30){
             counter_14 = 0;
         }
     }else{
@@ -78,7 +78,7 @@ void __ISR(_ADC_VECTOR, IPL2AUTO) Adc1Handler(void){
         
         values_15[counter_15++] = ADC1BUF0;
 
-        if(counter_15 == 10){
+        if(counter_15 == 30){
             counter_15 = 0;
         }
     }
