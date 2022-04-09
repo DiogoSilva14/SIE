@@ -33,17 +33,17 @@ int main(){
     
     float setpoint = get_setpoint();
     
-    PID_init(setpoint);
+    PI_init(setpoint);
     
     while(1){
         
-        float pwm = PID_loop(get_temp(THERMOCOUPLER));
+        float pwm = PI_loop(get_temp(THERMOCOUPLER));
         
         printf("Setpoint: %f Amb: %f Thermocoupler: %f\n\r", setpoint, get_temp(THERMISTOR), get_temp(THERMOCOUPLER));
         
         pwm_dutycycle(pwm);
         
-        delay_us(1000);
+        delay_us(100000);
         
     }
 }

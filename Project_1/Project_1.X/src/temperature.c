@@ -9,6 +9,8 @@ float get_temp(uint8_t device){
     if(device == THERMOCOUPLER){
         voltage = (float)get_adc_mean(THERMOCOUPLER)*3.3/1024;
         
+        printf("Voltage: %f \n\r", voltage);
+        
         voltage /= 0.71469;
         
         voltage += thermocoupler_temps[(int)get_temp(THERMISTOR)];

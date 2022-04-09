@@ -4,12 +4,12 @@ long unsigned int core_timer_last = 0;
 float temp_setpoint = 0;
 
 
-void PID_init(float setpoint){
+void PI_init(float setpoint){
     temp_setpoint = setpoint;
     core_timer_last = _CP0_GET_COUNT();
 }
 
-float PID_loop(float temp){
+float PI_loop(float temp){
     static float last_error = 0;
     static float last_integral = 0;
     

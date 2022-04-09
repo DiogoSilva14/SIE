@@ -64,11 +64,11 @@ int read_adc1(uint8_t pin){
 
 void __ISR(_ADC_VECTOR, IPL2AUTO) Adc1Handler(void){
     if(adc_pin == 14){
-        adc_pin = 15;
+        adc_pin = 1;
         AD1CHSbits.CH0SA = adc_pin;
         
         values_14[counter_14++] = ADC1BUF0;
-
+        
         if(counter_14 == 30){
             counter_14 = 0;
         }

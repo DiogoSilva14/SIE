@@ -19,17 +19,39 @@
 #include <plib.h>
 #include "constants.h"
 
-/** @brief 
+/** @brief Inits the adc using sampling by interrupt. The pins A15 and A14 are 
+ * initialized as analog pins. The sampling is also started at the end of the 
+ * initialization
  *
- *  @param 
  */
 
 void init_adc1();
 
+/** @brief Reads an adc pin by polling
+ * 
+ *  @param pin Pin to be read
+ * 
+ *  @return integer value read by adc
+ *
+ */
+
 int read_adc1(uint8_t pin);
 
-int get_adc_mean();
+/** @brief Gets the mean of the last 30 values read by the adc on a given pin
+ * 
+ *  @param pin Mean requested
+ * 
+ *  @return integer mean of the requested pin
+ *
+ */
 
-void __ISR(_TIMER_5_VECTOR, IPL3AUTO) Timer5Handler(void);
+int get_adc_mean(uint32_t pin);
+
+/** @brief Interrupt to read adc sampled value and store it in an array of the
+ * last 30 values. Changes pin to be sampled in each call.
+ *
+ */
+
+void __ISR(_ADC_VECTOR, IPL2AUTO) Adc1Handler(void);
 
 #endif

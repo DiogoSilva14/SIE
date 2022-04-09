@@ -25,7 +25,19 @@
 #include "constants.h"
 #include "adc/adc.h"
 
+/** @brief Gets the temperature of the specified device
+ *
+ *  @param device Device whose temperature is to be returned (use defines for
+ *  THERMISTOR and THERMOCOUPLER)
+ * 
+ *  @return float temperature of the device
+ */
 float get_temp(uint8_t device);
+
+/** @brief Asks the user for the setpoint of the heating element
+ * 
+ *  @return float of the setpoint entered
+ */
 float get_setpoint();
 
 #endif
