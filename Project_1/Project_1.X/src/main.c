@@ -39,7 +39,7 @@ int main(){
         
         float pwm = PI_loop(get_temp(THERMOCOUPLER));
         
-        printf("Setpoint: %f Amb: %f Thermocoupler: %f\n\r", setpoint, get_temp(THERMISTOR), get_temp(THERMOCOUPLER));
+        printf("Setpoint: %f Amb: %f Thermocoupler: %f Dutycycle: %f\n\r", setpoint, get_temp(THERMISTOR), get_temp(THERMOCOUPLER), pwm);
         
         pwm_dutycycle(pwm);
         

@@ -27,6 +27,8 @@ ambient_data = linspace(0,0,windowWidth)
 resistor_data = linspace(0,0,windowWidth)
 ptr = -windowWidth
 
+f = open("temp_graph.csv", "w")
+
 while 1:
     line = pic32.readline().decode('utf-8')
 
@@ -36,6 +38,7 @@ while 1:
         setpoint = float(splitted_list[1])
         ambient_temp = float(splitted_list[3])
         resistor_temp = float(splitted_list[5])
+        duty_cycle = float(splitted_list[7])
 
         setpoint_data[:-1] = setpoint_data[1:]
         setpoint_data[-1] = setpoint
@@ -61,7 +64,9 @@ while 1:
         QtGui.QApplication.processEvents()
 
         print("Setpoint: " + str(setpoint) + " Ambient: " + str(ambient_temp) + " Resistor: " + str(resistor_temp))
+        f.write(str(setpoint) + "," + str(ambient_temp) + "," + str(resistor_temp) + "," + str(duty_cycle) + "\n")
     except:
         pass
 
+f.close()
 pg.QtGui.QApplication.exec_()

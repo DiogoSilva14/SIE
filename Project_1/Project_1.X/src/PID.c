@@ -31,6 +31,12 @@ float PI_loop(float temp){
     last_integral = new_integral;
     last_error = error;
     
+    if(output < 0){
+        output = 0;
+    }else if(output > 100){
+        output = 100;
+    }
+    
     //printf("Error: %f New_integral: %f Output: %f \n\r", error, new_integral, output);
     
     return output;
