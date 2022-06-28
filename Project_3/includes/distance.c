@@ -8,30 +8,29 @@ float get_dist(){
     
     if(zone_1_voltage > zone_1_vals[0]){    // If the zone 1 voltage is lower than the lowest index of the LUT, the measurement is out of range
         return 90;
-    }else if(zone_1_voltage < zone_1_vals[9]){  // Out of zone 1 range
-        
-        if(zone_2_voltage < zone_2_vals[19]){   // Out of zone 2 range
-            if(zone_3_voltage < zone_3_vals[19]){   // If the zone 3 voltage is lower than the highest index of the LUT, the measurement is out of range
+    }else if(zone_1_voltage <= zone_1_vals[9]){  // Out of zone 1 range    
+        if(zone_2_voltage <= zone_2_vals[19]){   // Out of zone 2 range
+            if(zone_3_voltage <= zone_3_vals[20]){   // If the zone 3 voltage is lower than the highest index of the LUT, the measurement is out of range
                 return 610;
             }
             // ZONE 3 LINEARIZATION
-            for(int i=0; i < 19; i++){
-                if(zone_3_voltage < zone_3_vals[i] && zone_3_voltage > zone_3_vals[i+1]){
+            for(int i=0; i < 20; i++){
+                if(zone_3_voltage <= zone_3_vals[i] && zone_3_voltage >= zone_3_vals[i+1]){
                     return 400 + 10*linearize(zone_3_vals[i], i, zone_3_vals[i+1], i+1, zone_3_voltage);
                 }
             }
         }else{  // Value is in the zone 2 range
             // ZONE 2 LINEARIZATION
-            for(int i=0; i < 19; i++){
-                if(zone_2_voltage < zone_2_vals[i] && zone_2_voltage > zone_2_vals[i+1]){
+            for(int i=0; i < 20; i++){
+                if(zone_2_voltage <= zone_2_vals[i] && zone_2_voltage >= zone_2_vals[i+1]){
                     return 200 + 10*linearize(zone_2_vals[i], i, zone_2_vals[i+1], i+1, zone_2_voltage);
                 }
             }   
         }
     }else{  // Value is in zone 1 range
         // ZONE 1 LINEARIZATION
-        for(int i=0; i < 9; i++){
-            if(zone_1_voltage < zone_1_vals[i] && zone_1_voltage > zone_1_vals[i+1]){
+        for(int i=0; i < 10; i++){
+            if(zone_1_voltage <= zone_1_vals[i] && zone_1_voltage >= zone_1_vals[i+1]){
                 return 100 + 10*linearize(zone_1_vals[i], i, zone_1_vals[i+1], i+1, zone_1_voltage);
             }
         }

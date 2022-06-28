@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -107,74 +107,74 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/src/adc/adc.o: src/adc/adc.c  .generated_files/flags/default/fe575dd02b0a9b3024d580404936acd72960813c .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/adc/adc.o: src/adc/adc.c  .generated_files/flags/default/4ddef18059855cc93d8cca51be20de55e0cca75e .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src/adc" 
 	@${RM} ${OBJECTDIR}/src/adc/adc.o.d 
 	@${RM} ${OBJECTDIR}/src/adc/adc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/adc/adc.o.d" -o ${OBJECTDIR}/src/adc/adc.o src/adc/adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/timers/timers.o: src/timers/timers.c  .generated_files/flags/default/bf1e53c102f474d01f380e495a077551df4960c6 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/timers/timers.o: src/timers/timers.c  .generated_files/flags/default/eaad2ce53c3ef624b0deff024c35fd42063a31b3 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src/timers" 
 	@${RM} ${OBJECTDIR}/src/timers/timers.o.d 
 	@${RM} ${OBJECTDIR}/src/timers/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/timers/timers.o.d" -o ${OBJECTDIR}/src/timers/timers.o src/timers/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/uart/uart_functions.o: src/uart/uart_functions.c  .generated_files/flags/default/491571b2ac1b06632db3b15ab06deac72567b949 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/uart/uart_functions.o: src/uart/uart_functions.c  .generated_files/flags/default/1310126cc5435b45d0ee01d9bae279fa11d836a7 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src/uart" 
 	@${RM} ${OBJECTDIR}/src/uart/uart_functions.o.d 
 	@${RM} ${OBJECTDIR}/src/uart/uart_functions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/uart/uart_functions.o.d" -o ${OBJECTDIR}/src/uart/uart_functions.o src/uart/uart_functions.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/ba60056ce998a231dcc731164505385666724097 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/da5480ab107dbd0a9b7230e47efeafbc313fb81f .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.o.d 
 	@${RM} ${OBJECTDIR}/src/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/aux_functions.o: src/aux_functions.c  .generated_files/flags/default/79dc50061345030709f72799c29ac647a6ec53e3 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/aux_functions.o: src/aux_functions.c  .generated_files/flags/default/369a0710f1ae7cf712302010fba0dd40549fa430 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/aux_functions.o.d 
 	@${RM} ${OBJECTDIR}/src/aux_functions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/aux_functions.o.d" -o ${OBJECTDIR}/src/aux_functions.o src/aux_functions.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/temperature.o: src/temperature.c  .generated_files/flags/default/f2aba594738be456149326b7a360c96fb138df73 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/temperature.o: src/temperature.c  .generated_files/flags/default/54bd4d53d274946cea342ecfc8e16252a42a1125 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/temperature.o.d 
 	@${RM} ${OBJECTDIR}/src/temperature.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/temperature.o.d" -o ${OBJECTDIR}/src/temperature.o src/temperature.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
 else
-${OBJECTDIR}/src/adc/adc.o: src/adc/adc.c  .generated_files/flags/default/cac1a268af2851b143b897e7e53f54e72390e657 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/adc/adc.o: src/adc/adc.c  .generated_files/flags/default/430749664346928afc9fbcb707c3f22666067447 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src/adc" 
 	@${RM} ${OBJECTDIR}/src/adc/adc.o.d 
 	@${RM} ${OBJECTDIR}/src/adc/adc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/adc/adc.o.d" -o ${OBJECTDIR}/src/adc/adc.o src/adc/adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/timers/timers.o: src/timers/timers.c  .generated_files/flags/default/b8fd2eab39dfe8946242358298051653c63824a2 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/timers/timers.o: src/timers/timers.c  .generated_files/flags/default/4c48eaf4e760bb8ed6c0e2db1ef5fc5ac41e28b4 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src/timers" 
 	@${RM} ${OBJECTDIR}/src/timers/timers.o.d 
 	@${RM} ${OBJECTDIR}/src/timers/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/timers/timers.o.d" -o ${OBJECTDIR}/src/timers/timers.o src/timers/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/uart/uart_functions.o: src/uart/uart_functions.c  .generated_files/flags/default/fcb97561ded5dd8dba8ac4c2468828f8f4327c95 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/uart/uart_functions.o: src/uart/uart_functions.c  .generated_files/flags/default/e31bb46fb790c66d3eb478b4c93c7674e62dec1c .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src/uart" 
 	@${RM} ${OBJECTDIR}/src/uart/uart_functions.o.d 
 	@${RM} ${OBJECTDIR}/src/uart/uart_functions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/uart/uart_functions.o.d" -o ${OBJECTDIR}/src/uart/uart_functions.o src/uart/uart_functions.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/d701773b1343d302f3efb4d84c48a59e727f63ab .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/eca49de56827882efc72a28310e3e94f90f49482 .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.o.d 
 	@${RM} ${OBJECTDIR}/src/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/aux_functions.o: src/aux_functions.c  .generated_files/flags/default/13a6aeef53d7f75687ff99f42e8f15ea8cfb75a4 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/aux_functions.o: src/aux_functions.c  .generated_files/flags/default/4acd99e81fcd7358e92adf3f3af5c897c85978af .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/aux_functions.o.d 
 	@${RM} ${OBJECTDIR}/src/aux_functions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"includes" -MP -MMD -MF "${OBJECTDIR}/src/aux_functions.o.d" -o ${OBJECTDIR}/src/aux_functions.o src/aux_functions.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -std=c99   
 	
-${OBJECTDIR}/src/temperature.o: src/temperature.c  .generated_files/flags/default/baf2006a4f29e268001092c79fb585fa0f911f28 .generated_files/flags/default/53fcce4569ab8ea0afbe38483465d1a611fe02ec
+${OBJECTDIR}/src/temperature.o: src/temperature.c  .generated_files/flags/default/cb0cb6a64a3549057b55645585835e29c1ba4b3f .generated_files/flags/default/fa77e48c5d6b209b0dbc904325b3870195f7a677
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/temperature.o.d 
 	@${RM} ${OBJECTDIR}/src/temperature.o 
@@ -199,7 +199,7 @@ else
 ${DISTDIR}/Project_1.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/Project_1.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  -std=c99 $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=256,--defsym=_min_stack_size=256,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml 
-	${MP_CC_DIR}/xc32-bin2hex ${DISTDIR}/Project_1.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/Project_1.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 
@@ -218,7 +218,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

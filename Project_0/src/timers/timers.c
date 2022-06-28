@@ -13,13 +13,11 @@ void init_timer4(uint32_t freq){
 
 void init_timer2_pwm(uint32_t freq, float duty_cycle){
     
-    PR_REGISTER = GetPeripheralClock()/4/freq;
+    PR_REGISTER = GetPeripheralClock()/4/freq;  // Calculate the PR_REGISTER given frequency and assuming PS = 1:4
     
-    OpenTimer2(T2_ON | T2_PS_1_4 , PR_REGISTER);
+    OpenTimer2(T2_ON | T2_PS_1_4 , PR_REGISTER); // Configure the timer
     
-    float divisor = 100/duty_cycle;
-    
-    OC1RS = PR_REGISTER/divisor;
+    pwm_dutycycle(duty_cycle); // Apply the initial duty_cycle
     
     OC1CONbits.OC32 = 0; // Disable 32bit mode
     OC1CONbits.OCTSEL = 0; // Use Timer2 as a source

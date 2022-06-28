@@ -18,24 +18,60 @@
 #include "uart/uart_functions.h"
 #include "adc/adc.h"
 
+#define SIGNAL 14
+#define DELAY 13
+
+#define SAMPLING_FREQ 100
+
 int main(){
+    // This function optimizes PIC32's performance to the frequency chosen
     SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
     
+    // Enable Multivectored interruptions
     INTEnableSystemMultiVectoredInt();
     
+    // Enable interruptions
     INTEnableInterrupts();
     
-    init_timer4(500);
+    // Initialize UART communication at 9600 baud rate
     init_uart(9600);
-    init_timer2_pwm(2000, 10.0);
+    
+    // Initialize the timer2 with PWM module at 2kHz with 0% duty-cycle
+    init_timer2_pwm(2000, 0.0);
+    
+    // Initialize ADC1
     init_adc1();
     
-    float pwm_val = 0;
-    
+    // This signal_vals array functions somewhat like a circular buffer, its
+    // function is to store the values of the samples taken by the ADC, so
+    // that we can vary the delay by adjusting the tail relating to the head
+    uint16_t signal_vals[100] = {0};
+    int16_t head = 0;
+    int16_t tail = 0;
+    int16_t delay_samples = 0;
+   
     while(1){
-        printf("PWM Val: %f \n", get_adc_voltage());
-        pwm_val = get_adc_voltage()/3.3*100;
-        pwm_dutycycle(pwm_val);
-        delay_us(1000);
+        // Store the signal sample
+        signal_vals[head] = get_adc_val(SIGNAL);
+        
+        // Get the amount of delay in samples by reading the delay potentiometer
+        delay_samples = (get_adc_val(DELAY) * 100)/1024;
+        
+        // Prevent head from going over the array dimension
+        head = head % 100;
+        
+        // The tail should be behind the head by an amount equal to
+        // delay_samples. The + 100 is used to prevent negative values
+        // The -1 prevents it from getting the head value
+        tail = (head + 100 - delay_samples) % 100;
+        
+        // The PWM duty cycle is adjusted in regards to the signal to be displayed
+        pwm_dutycycle((signal_vals[tail]*100)/1024);
+        
+        // Increment the head
+        head++;
+        
+        // Regulate the sampling frequency
+        delay_us(1000000/SAMPLING_FREQ);
     }
 }
